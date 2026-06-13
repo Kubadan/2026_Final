@@ -1,4 +1,4 @@
-public delegate void CommandFunc();
+public delegate Task CommandFunc();
 
 // Třída Command, definuje příkazy
 public class Command
