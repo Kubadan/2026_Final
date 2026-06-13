@@ -7,7 +7,8 @@ Console.WriteLine("      Vítejte v aplikaci PATRIOTERM    ");
 Console.ForegroundColor = ConsoleColor.Blue;
 Console.WriteLine("=============================================");
 Console.ResetColor();
-Console.WriteLine("Pro zobrazení nápovědy napiště : 'pomoc'");
+Console.WriteLine("Pro zobrazení nápovědy napište : 'pomoc'");
+
 // Read loop
 while (true)
 {
@@ -22,10 +23,10 @@ while (true)
         Console.WriteLine("Špatný příkaz");
         continue;
     }
-
-    command.Action();
+    await command.Action();
 }
-// rozdělení inputu na slova
+
+// Rozdělení inputu na slova
 List<string> CleanInput(string? input)
 {
     if (input == null)

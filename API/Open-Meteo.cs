@@ -1,9 +1,13 @@
-using System.Net.Http.Json;
-using System.Text.Json;
 namespace OpenMeteo;
 
 public class OpenMeteoResponse
 {
-    public double Temperature { get; set; }
-    public double apparent_Temperature { get; set; }
+    public CurrentWeather Current { get; set; }
+}
+
+public class CurrentWeather
+{
+
+    public double Temperature2m { get; set; }
+    public double ApparentTemperature { get; set; }
 }
