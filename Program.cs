@@ -7,7 +7,9 @@ Console.WriteLine("      Vítejte v aplikaci PATRIOTERM    ");
 Console.ForegroundColor = ConsoleColor.Blue;
 Console.WriteLine("=============================================");
 Console.ResetColor();
+Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("Pro zobrazení nápovědy napište : 'pomoc'");
+Console.ResetColor();
 
 // Read loop
 while (true)
