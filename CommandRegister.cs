@@ -28,6 +28,7 @@ static class CommandRegister
         await Task.CompletedTask;
     }
 
+    //PARAMETRY DEFINUJÍCÍ MĚSTA
     private static async Task Prague() => await FetchWeather("Praha", "50.07", "14.43");
     private static async Task Brno() => await FetchWeather("Brno", "49.19", "16.60");
 
@@ -37,25 +38,24 @@ static class CommandRegister
         [
             new Command("konec", "Ukončí smyčku", Exit),
             new Command("pomoc", "Ukáže možné příkazy", Help),
-            new Command("praha", "Ukáže počasí v Praze", Prague),
-            new Command("brno", "Ukáže počasí v Brně", Brno)
+            new Command("praha", "Ukáže teplotu v Praze", Prague),
+            new Command("brno", "Ukáže teplotu v Brně", Brno)
         ];
     }
 
     private static async Task FetchWeather(string cityName, string latitude, string longitude)
     {
         Console.WriteLine($"Načítám počasí pro město {cityName}...");
-        string url = $"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,apparent_temperature";
+        string url =
+            $"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,apparent_temperature";
 
         try
         {
-            var response = await Http.GetFromJsonAsync<OpenMeteoResponse>(url);
-                Console.WriteLine($"--- Počasí: {cityName} ---");
-                Console.WriteLine($"Aktuální teplota: {response.Current.Temperature2m}°C");
-                Console.WriteLine($"Pocitová teplota: {response.Current.ApparentTemperature}°C");
-                Console.WriteLine("-------------------------");
-                Console.WriteLine(url);
-                //TODO: Odstřelit si hlavu .50 BMG
+            var response = await Http.GetFromJsonAsync<OpenMeteoResponse>(url, JsonOpts);
+            Console.WriteLine($"--- Počasí: {cityName} ---");
+            Console.WriteLine($"Aktuální teplota: {response.Current.Temperature_2m}°C");
+            Console.WriteLine($"Pocitová teplota: {response.Current.ApparentTemperature}°C");
+            Console.WriteLine("-------------------------");
         }
         catch (UriFormatException ex)
         {
@@ -84,7 +84,6 @@ static class CommandRegister
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"[Neočekávaná chyba]: {ex.Message}");
             Console.ResetColor();
-
         }
     }
 }

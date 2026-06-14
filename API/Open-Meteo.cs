@@ -7,7 +7,6 @@ public class OpenMeteoResponse
 
 public class CurrentWeather
 {
-
-    public double Temperature2m { get; set; }
+    public double Temperature_2m { get; set; }
     public double ApparentTemperature { get; set; }
 }

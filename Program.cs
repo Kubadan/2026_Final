@@ -16,13 +16,14 @@ while (true)
     var input = CleanInput(Console.ReadLine());
     if (input.Count == 0)
         continue;
-    
+
     var command = commands.Find(c => c.Name == input[0]);
     if (command == null)
     {
         Console.WriteLine("Špatný příkaz");
         continue;
     }
+
     await command.Action();
 }
 

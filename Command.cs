@@ -1,4 +1,3 @@
-using OpenMeteo;
 public delegate Task CommandFunc();
 
 public class Command
