@@ -69,7 +69,7 @@ static class CommandRegister
         }
         catch (Exception ex)
         {
-            // Zachytí jakoukoliv jinou neočekávanou systémovou chybu
+            // ZACHYTÍ JAKOUKOLI JINOU CHYBU
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"[Neočekávaná chyba]: {ex.Message}");
             Console.ResetColor();
